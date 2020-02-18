@@ -15,8 +15,10 @@ class MoviesController < ApplicationController
     @all_ratings = movies.distinct.pluck(:rating)
     ratings = params[:ratings]
     sort = params[:sort]
-    movies = movies.with_ratings(ratings.keys) if not ratings.nil?
-    movies = movies.order(sort) if not sort.nil?
+    session[:sort] = sort if not sort.nil?
+    session[:ratings] = ratings.keys if not ratings.nil?
+    movies = movies.with_ratings(session[:ratings]) if not session[:ratings].nil?
+    movies = movies.order(session[:sort]) if not session[:sort].nil?
     @movies = movies
     @sort_col = sort
     @checked_ratings = ratings.keys if not ratings.nil?
