@@ -14,7 +14,7 @@ class MoviesController < ApplicationController
     movies = Movie.all
     ratings = params[:ratings]
     sort = params[:sort]
-    movies = movies.with_ratings(ratings) if not ratings.nil?
+    movies = movies.with_ratings(ratings.keys) if not ratings.nil?
     movies = movies.order(sort) if not sort.nil?
     @movies = movies
     @sort_col = params[:id]
