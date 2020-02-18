@@ -13,6 +13,7 @@ class MoviesController < ApplicationController
   def index
     movies = Movie.all
     @all_ratings = movies.distinct.pluck(:rating)
+    @checked_ratings = @all_ratings
     ratings = params[:ratings]
     sort = params[:sort]
     session[:sort] = sort if not sort.nil?
