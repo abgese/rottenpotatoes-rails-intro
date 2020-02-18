@@ -19,6 +19,7 @@ class MoviesController < ApplicationController
     movies = movies.order(sort) if not sort.nil?
     @movies = movies
     @sort_col = sort
+    @checked_ratings = ratings.keys if not ratings.nil?
   end
 
   def new
