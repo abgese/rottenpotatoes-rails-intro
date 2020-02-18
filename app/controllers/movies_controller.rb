@@ -20,8 +20,8 @@ class MoviesController < ApplicationController
     movies = movies.with_ratings(session[:ratings]) if not session[:ratings].nil?
     movies = movies.order(session[:sort]) if not session[:sort].nil?
     @movies = movies
-    @sort_col = sort
-    @checked_ratings = ratings.keys if not ratings.nil?
+    @sort_col = session[:sort]
+    @checked_ratings = session[:ratings] if not session[:ratings].nil?
   end
 
   def new
