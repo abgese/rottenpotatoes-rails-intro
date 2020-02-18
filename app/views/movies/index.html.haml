@@ -14,7 +14,7 @@
       %th{:class =>("hilite" if @sort_col == "release_date")}= link_to "Release Date",movies_path(:sort => "release_date"), :id=>"release_date_header"
       %th More Info
   %tbody
-    - @movies.each do |movie|
+    - @movies.each do |movie| 
       %tr
         %td= movie.title
         %td= movie.rating
