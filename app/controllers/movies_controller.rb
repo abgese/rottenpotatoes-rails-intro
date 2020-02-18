@@ -12,6 +12,7 @@ class MoviesController < ApplicationController
 
   def index
     movies = Movie.all
+    @all_ratings = movies.distinct.pluck(:rating)
     ratings = params[:ratings]
     sort = params[:sort]
     movies = movies.with_ratings(ratings.keys) if not ratings.nil?
